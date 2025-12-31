@@ -17,9 +17,9 @@ export default function Hero() {
                                 Using a work email helps find teammates and boost collaboration.
                             </span>
                         </div>
-                        <button className="rounded-full w-full px-2 py-2 bg-blue-700 text-white font-medium">
+                        <a href="/signup" className="rounded-full w-full px-2 py-2 bg-blue-700 text-white font-medium">
                             Sign up
-                        </button>
+                        </a>
 
                         <div className="flex ml-auto mr-auto gap-1">
                             <span className="text-black text-sm">Trying to access Jira?</span>
