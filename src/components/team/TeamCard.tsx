@@ -15,7 +15,7 @@ export default function TeamCard({ t, userId }: any) {
         setLoading(true)
         setError(null)
         try {
-            const res: any = await axios.post('https://jira-67wdkj0gi-yogesh-kumar21s-projects.vercel.app/api/teamjoin', {teamId: teamId})
+            const res: any = await axios.post('https://jira-yogesh-kumar21s-projects.vercel.app/api/teamjoin', {teamId: teamId})
             if (res && res.status == 200) {
                 alert('Succesfully joined the team!')
                 window.location.reload()

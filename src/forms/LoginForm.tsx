@@ -47,7 +47,7 @@ const LoginForm = () => {
             setError(null)
 
             console.log("Submitted Data: ", data)
-            const res: any = await sendRequest(data, 'https://jira-67wdkj0gi-yogesh-kumar21s-projects.vercel.app/api/login', 'form')
+            const res: any = await sendRequest(data, 'https://jira-yogesh-kumar21s-projects.vercel.app/api/login', 'form')
             if (res && res.status == 200) {
                 router.push('/')
             }

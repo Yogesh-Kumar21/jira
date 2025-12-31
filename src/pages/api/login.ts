@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     const { email, password } = req.body
     try {
-        const data:any = await axios.post('https://jira-backend-knkxrdn1e-yogesh-kumar21s-projects.vercel.app/auth/login', {
+        const data:any = await axios.post('https://jira-backend-yogesh-kumar21s-projects.vercel.app/auth/login', {
           email: email,
           password: password
         })

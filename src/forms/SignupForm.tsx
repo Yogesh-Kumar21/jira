@@ -87,7 +87,7 @@ const SignupForm = () => {
     // }
 
     const sendRequest = async (data: any) => {
-        const res: any = await axios.post('https://jira-backend-knkxrdn1e-yogesh-kumar21s-projects.vercel.app/auth/signup', {
+        const res: any = await axios.post('https://jira-backend-yogesh-kumar21s-projects.vercel.app/auth/signup', {
             name: data.name,
             email: data.email,
             password: data.password
