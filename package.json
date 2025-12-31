@@ -27,6 +27,7 @@
     "@tiptap/starter-kit": "^2.11.5",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/multer": "^2.0.0",
+    "@types/nodemailer": "^7.0.4",
     "@uploadthing/react": "^7.3.0",
     "axios": "^1.7.9",
     "bcryptjs": "^3.0.3",
