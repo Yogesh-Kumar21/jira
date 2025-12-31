@@ -47,7 +47,7 @@ const LoginForm = () => {
             setError(null)
 
             console.log("Submitted Data: ", data)
-            const res: any = await sendRequest(data, 'http://localhost:3000/api/login', 'form')
+            const res: any = await sendRequest(data, 'https://jira-mauve.vercel.app/api/login', 'form')
             if (res && res.status == 200) {
                 router.push('/')
             }
@@ -78,8 +78,8 @@ const LoginForm = () => {
                         onSubmit={handleSubmit(onSubmit)}
                         className="flex flex-col gap-4 w-[350px] text-base text-gray-800"
                     >
-                        <input id="email" type="email" placeholder="E-mail" className="w-full bg-white border-[1px] border-gray-400 px-2 py-1" {...register('email')} />
-                        <input id="password" type="password" placeholder="Password" className="w-full bg-white border-[1px] border-gray-400 px-2 py-1" {...register('password')} />
+                        <input id="email" type="email" placeholder="E-mail" className="w-full border border-gray-400 px-2 py-1" {...register('email')} />
+                        <input id="password" type="password" placeholder="Password" className="w-full bg-white border border-gray-400 px-2 py-1" {...register('password')} />
                         <span className="ml-auto">
                             <a href="" className="text-blue-600 text-sm">Forgot Password?</a>
                         </span>

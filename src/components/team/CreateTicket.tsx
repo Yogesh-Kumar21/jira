@@ -41,7 +41,7 @@ export default function CreateTicket({ userId }: any) {
         setError(null)
 
         try {
-            const res: any = await axios.post('http://localhost:3000/api/createticket', {
+            const res: any = await axios.post('https://jira-mauve.vercel.app/api/createticket', {
                 name: name,
                 description: description,
                 assigner: userId,

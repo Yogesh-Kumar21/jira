@@ -46,7 +46,7 @@ export default function CreateTeam({ userId }: any) {
         setError(null)
 
         try {
-            const res: any = await axios.post('http://localhost:3000/api/createteam', {
+            const res: any = await axios.post('https://jira-mauve.vercel.app/api/createteam', {
                 name: name,
                 logo: logo
             })
