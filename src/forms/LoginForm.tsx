@@ -102,7 +102,7 @@ const LoginForm = () => {
                         }
                         <button
                             type="submit"
-                            className="flex justify-center bg-blue-700 text-white p-1"
+                            className="flex justify-center bg-blue-700 text-white p-2"
                         >
                             {
                                 loading ? <Spinner /> : "Login"

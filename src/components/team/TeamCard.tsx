@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Users } from "lucide-react"
 import axios from "axios"
 import { teamJoin } from "@/utilities/client_utils"
+import { Spinner } from "@chakra-ui/react"
 
 export default function TeamCard({ t, userId }: any) {
 
@@ -61,11 +62,18 @@ export default function TeamCard({ t, userId }: any) {
                     </div>
                     <span className="text-gray-600 text-sm">Created on: {new Date(t.createdAt).toDateString()}</span>
                 </div>
-                {!f && <button onClick={
-                    async () => {
-                        await handleJoinTeam(t._id)
-                    }
-                } className="text-blue-600 bg-blue-50 border border-blue-600 text-base">Join Team</button>}
+                {!f &&
+                    <button
+                        disabled={loading}
+                        onClick={
+                            async () => {
+                                await handleJoinTeam(t._id)
+                            }
+                        } className="flex justify-center items-center text-blue-600 bg-blue-50 border border-blue-600 text-base">
+                        {
+                            loading ? "Joining team..." : "Join Team"
+                        }
+                    </button>}
             </div>
         </div>
     )
