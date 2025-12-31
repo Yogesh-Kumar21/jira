@@ -15,7 +15,7 @@ export default async function TeamView({ teamId, userId }: { teamId: string, use
             medium: "text-orange-500 font-bold",
             low: "text-blue-500 font-bold",
         }
-        return <span className={`${styles[priority] || "text-gray-400"} text-xs uppercase`}>— {priority}</span>
+        return <span className={`${styles[priority] || "text-gray-400"} text-xs uppercase`}>{priority}</span>
     }
 
     return (

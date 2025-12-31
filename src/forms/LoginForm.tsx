@@ -61,7 +61,6 @@ const LoginForm = () => {
                 return;
             }
 
-            alert('Team Created successfully')
             window.location.href = "/"
         }
         catch (err: any) {
