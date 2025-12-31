@@ -8,13 +8,37 @@ import { useState } from "react";
 export default function UserButton({ pic, name, email, business, team }: any) {
 
     const [hidden, setHidden] = useState<boolean>(true)
+    const [loading, setLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
 
     const handleLogout = async () => {
-        // const res: any = await axios.get('http://localhost:5000/api/logout')
-        // console.log("logout response: ", res)
-        // if (res && res.status == 200) {
-        //     window.location.href = "/"
-        // }
+        try {
+            setLoading(true)
+
+            const res = await fetch("/api/auth/logout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({})
+            });
+
+            const _data = await res.json();
+
+            if (!res.ok) {
+                setError(_data.message);
+                return;
+            }
+
+            window.location.href = "/"
+        }
+        catch (err: any) {
+            console.error(err)
+            setError(err.message)
+        }
+        finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -58,13 +82,13 @@ export default function UserButton({ pic, name, email, business, team }: any) {
                             >
                                 Your Account
                             </a>
-                            
+
                         </div>
 
                         {/* Separator */}
                         <div className="border-t border-gray-100 my-1"></div> {/* Clear separator */}
 
-                        
+
                         {/* Logout Button */}
                         <div className="py-1">
                             <button
@@ -72,7 +96,9 @@ export default function UserButton({ pic, name, email, business, team }: any) {
                                 role="menuitem"
                                 onClick={handleLogout}
                             >
-                                Sign out
+                                {
+                                    loading ? "Signing out..." : "Sign out"
+                                }
                             </button>
                         </div>
                     </div>
