@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
         const cookie = req.cookies['id']
         
-        const data:any = await axios.post('http://localhost:5000/api/team/create', {
+        const data:any = await axios.post('https://jira-backend-knkxrdn1e-yogesh-kumar21s-projects.vercel.app/api/team/create', {
             name: name,
             logo: logo
         }, {
