@@ -15,7 +15,7 @@ export const getProfile = async () => {
                     Cookie: `${id_cookie.name}=${id_cookie.value}`
                 }
             })
-            // console.log(res)
+            console.log(res)
 
             if (res && res.status == 200) {
                 return {

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { jwtDecode } from "jwt-decode"
 import Spinner from "@/components/utils/Spinner";
 import { FaJira } from "react-icons/fa";
@@ -20,7 +20,6 @@ const LoginForm = () => {
 
     const [error, setError] = useState<string | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
-    const router = useRouter()
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(schema),
@@ -50,7 +49,7 @@ const LoginForm = () => {
             console.log("Submitted Data: ", data)
             const res: any = await login(data.email, data.password)
             if (res && res.status == 200) {
-                router.push('/')
+                redirect("/")
             }
             else {
                 setError("Error logging in. Please try again.")
