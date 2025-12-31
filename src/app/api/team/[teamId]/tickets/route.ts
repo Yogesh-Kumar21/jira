@@ -3,11 +3,13 @@ import { NextResponse } from "next/server";
 import { dbConnect } from "@/lib/db";
 import Team from "@/lib/models/Team";
 
-export async function GET(req: Request, context: { params: { teamId: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ teamId: string }> }) {
     try {
         await dbConnect();
 
-        const team: any = await Team.findById(context.params.teamId)
+        const {teamId} = await params;
+
+        const team: any = await Team.findById(teamId)
             .populate({
                 path: "tickets",
                 populate: {
