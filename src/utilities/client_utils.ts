@@ -3,7 +3,7 @@ import axios from "axios";
 export async function login(email: string, password: string) {
     try {
         const res = await axios.post(
-            "https://jira-backend-yogesh-kumar21s-projects.vercel.app/auth/login",
+            "https://jira-backend-six.vercel.app/auth/login",
             {
                 email,
                 password,
@@ -21,7 +21,7 @@ export async function login(email: string, password: string) {
 
 export async function createTeam(name: string, logo: string) {
     try {
-        const data:any = await axios.post('https://jira-backend-yogesh-kumar21s-projects.vercel.app/api/team/create', {
+        const data:any = await axios.post('https://jira-backend-six.vercel.app/api/team/create', {
             name: name,
             logo: logo
         }, {
@@ -37,7 +37,7 @@ export async function createTeam(name: string, logo: string) {
 
 export async function createTicket(name: string, description: string, assigner: string, priority: string) {
     try {        
-        const data:any = await axios.post('https://jira-backend-yogesh-kumar21s-projects.vercel.app/api/ticket/create', {
+        const data:any = await axios.post('https://jira-backend-six.vercel.app/api/ticket/create', {
             name: name,
             description: description,
             assigned_by: assigner,
@@ -55,7 +55,7 @@ export async function createTicket(name: string, description: string, assigner: 
 
 export async function teamJoin(teamId: string) {
     try {
-        const data:any = await axios.post('https://jira-backend-yogesh-kumar21s-projects.vercel.app/api/team/join', {
+        const data:any = await axios.post('https://jira-backend-six.vercel.app/api/team/join', {
             teamId: teamId
         }, {
             withCredentials: true

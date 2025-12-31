@@ -10,7 +10,7 @@ export const getProfile = async () => {
         const id_cookie: any = cookieStore.get('id')
 
         if (id_cookie) {
-            const res: any = await axios.get(`https://jira-backend-yogesh-kumar21s-projects.vercel.app/api/profile`, {
+            const res: any = await axios.get(`https://jira-backend-six.vercel.app/api/profile`, {
                 headers: {
                     Cookie: `${id_cookie.name}=${id_cookie.value}`
                 }
@@ -39,7 +39,7 @@ export const getProfile = async () => {
 
 export const getTeams = async () => {
     try {
-        const res: any = await axios.get('https://jira-backend-yogesh-kumar21s-projects.vercel.app/api/teams')
+        const res: any = await axios.get('https://jira-backend-six.vercel.app/api/teams')
         if (res && res.status == 200) {
             return res.data.teams
         }
@@ -59,7 +59,7 @@ export const getTeam = async (teamId: string) => {
         const id_cookie: any = cookieStore.get('id')
 
         if (id_cookie) {
-            const res: any = await axios.get(`https://jira-backend-yogesh-kumar21s-projects.vercel.app/api/team/${teamId}`, {
+            const res: any = await axios.get(`https://jira-backend-six.vercel.app/api/team/${teamId}`, {
                 headers: {
                     Cookie: `${id_cookie.name}=${id_cookie.value}`
                 }
