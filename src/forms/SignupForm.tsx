@@ -105,11 +105,27 @@ const SignupForm = () => {
         setLoading(true)
         setError(null)
         try {
-            let res = await sendRequest(data)
-            console.log("Signup response: ", res)
-            if (res && res.status(201)) {
-                router.push('/login')
+            const res = await fetch("/api/auth/signup", {
+                method: "POST",
+                credentials: "include", // important to include cookies
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: data.name,
+                    email: data.email,
+                    password: data.password
+                })
+            });
+
+            const _data = await res.json();
+
+            if (!res.ok) {
+                setError(_data.message);
+                return;
             }
+
+            window.location.href = "/login"
         } catch (err: any) {
             setError(err.message)
             console.error(err)

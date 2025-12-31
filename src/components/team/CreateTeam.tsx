@@ -38,23 +38,33 @@ export default function CreateTeam({ userId }: any) {
         console.log("name: ", name)
         console.log("logo: ", logo)
 
-        if (name=="" || logo=="") {
+        if (name == "" || logo == "") {
             setError("Please fill out both fields")
             return
         }
-        
+
         setLoading(true)
         setError(null)
 
         try {
-            const res: any = await createTeam(name, logo)
-            if (res && (res.status == 200 || res.status == 201)) {
-                alert('Team Created successfully')
-                window.location.reload()
+            const res = await fetch("/api/team/create", {
+                method: "POST",
+                credentials: "include", // important to include cookies
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, logo })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                setError(data.message);
+                return;
             }
-            else {
-                setError("Some error occured while creating team. Please try again")
-            }
+
+            alert('Team Created successfully')
+            window.location.reload()
         }
         catch (err: any) {
             console.error(err)

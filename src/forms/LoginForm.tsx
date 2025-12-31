@@ -45,13 +45,25 @@ const LoginForm = () => {
             setError(null)
 
             console.log("Submitted Data: ", data)
-            const res: any = await login(data.email, data.password)
-            if (res && res.status == 200) {
-                window.location.href = "/"
+
+            const res = await fetch("/api/auth/login", {
+                method: "POST",
+                credentials: "include", // important to include cookies
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email: data.email, password: data.password })
+            });
+
+            const _data = await res.json();
+
+            if (!res.ok) {
+                setError(_data.message);
+                return;
             }
-            else {
-                setError("Error logging in. Please try again.")
-            }
+
+            alert('Team Created successfully')
+            window.location.href = "/"
         }
         catch (err: any) {
             console.error(err)

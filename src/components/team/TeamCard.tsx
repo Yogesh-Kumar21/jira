@@ -16,11 +16,24 @@ export default function TeamCard({ t, userId }: any) {
         setLoading(true)
         setError(null)
         try {
-            const res: any = await teamJoin(teamId)
-            if (res && (res.status == 200 || res.status == 201)) {
-                alert('Succesfully joined the team!')
-                window.location.reload()
+            const res = await fetch("/api/team/join", {
+                method: "POST",
+                credentials: "include", // important to include cookies
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ teamId: teamId })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                setError(data.message);
+                return;
             }
+
+            alert('Team Joined successfully')
+            window.location.reload()
         }
         catch (err: any) {
             console.error(err)

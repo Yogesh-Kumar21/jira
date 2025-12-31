@@ -42,11 +42,28 @@ export default function CreateTicket({ userId }: any) {
         setError(null)
 
         try {
-            const res: any = await createTicket(name, description, userId, priority)
-            if (res && (res.status == 200 || res.status == 201)) {
-                alert('Ticket Created successfully')
-                window.location.reload()
+            const res = await fetch("/api/ticket/create", {
+                method: "POST",
+                credentials: "include", // important to include cookies
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    description: description,
+                    priority: priority
+                })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                setError(data.message);
+                return;
             }
+
+            alert('Ticket Created successfully')
+            window.location.reload()
         }
         catch (err: any) {
             console.error(err)
