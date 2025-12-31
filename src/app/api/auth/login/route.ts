@@ -32,11 +32,13 @@ export async function POST(req: Request) {
         // Set cookie
         const response = NextResponse.json({ message: "success" }, { status: 200 });
 
+        console.log("LOGGED IN")
+
         response.cookies.set({
             name: "id",
             value: token,
             httpOnly: true,
-            maxAge: 3600, // 1 hour
+            maxAge: 3600000, // 1 hour
             path: "/",
             secure: process.env.NODE_ENV === "production",
             sameSite: "lax",
