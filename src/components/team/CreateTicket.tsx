@@ -5,6 +5,7 @@ import { Plus } from "lucide-react"
 import { useState } from "react"
 import Spinner from "../utils/Spinner"
 import axios from "axios"
+import { createTicket } from "@/utilities/client_utils"
 
 export default function CreateTicket({ userId }: any) {
 
@@ -41,13 +42,11 @@ export default function CreateTicket({ userId }: any) {
         setError(null)
 
         try {
-            const res: any = await axios.post('https://jira-yogesh-kumar21s-projects.vercel.app/api/createticket', {
-                name: name,
-                description: description,
-                assigner: userId,
-                priority
-            })
-            window.location.reload()
+            const res: any = await createTicket(name, description, userId, priority)
+            if (res && (res.status == 200 || res.status == 201)) {
+                alert('Ticket Created successfully')
+                window.location.reload()
+            }
         }
         catch (err: any) {
             console.error(err)

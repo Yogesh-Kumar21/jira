@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Users } from "lucide-react"
 import axios from "axios"
+import { teamJoin } from "@/utilities/client_utils"
 
 export default function TeamCard({ t, userId }: any) {
 
@@ -15,8 +16,8 @@ export default function TeamCard({ t, userId }: any) {
         setLoading(true)
         setError(null)
         try {
-            const res: any = await axios.post('https://jira-yogesh-kumar21s-projects.vercel.app/api/teamjoin', {teamId: teamId})
-            if (res && res.status == 200) {
+            const res: any = await teamJoin(teamId)
+            if (res && (res.status == 200 || res.status == 201)) {
                 alert('Succesfully joined the team!')
                 window.location.reload()
             }

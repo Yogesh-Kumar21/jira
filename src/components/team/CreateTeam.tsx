@@ -5,6 +5,7 @@ import { Plus } from "lucide-react"
 import { useState } from "react"
 import Spinner from "../utils/Spinner"
 import axios from "axios"
+import { createTeam } from "@/utilities/client_utils"
 
 export default function CreateTeam({ userId }: any) {
 
@@ -46,11 +47,8 @@ export default function CreateTeam({ userId }: any) {
         setError(null)
 
         try {
-            const res: any = await axios.post('https://jira-yogesh-kumar21s-projects.vercel.app/api/createteam', {
-                name: name,
-                logo: logo
-            })
-            if (res && res.status == 200) {
+            const res: any = await createTeam(name, logo)
+            if (res && (res.status == 200 || res.status == 201)) {
                 alert('Team Created successfully')
                 window.location.reload()
             }

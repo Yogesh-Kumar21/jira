@@ -7,7 +7,7 @@ const Navbar = async ({ isLoggedIn, user }: any) => {
     return (
         <nav className="text-black bg-white border-gray-100 border-b-2 sticky lg:px-36 px-4">
             <div className="flex flex-row w-full items-center justify-between mx-auto py-4 md:gap-8">
-                <a href="https://jira-yogesh-kumar21s-projects.vercel.app/" className="">
+                <a href="/" className="">
                     {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" /> */}
                     <span className="flex items-center gap-1 self-center text-3xl whitespace-nowrap">
                         <FaJira color="blue" />

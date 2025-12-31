@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode"
 import Spinner from "@/components/utils/Spinner";
 import { FaJira } from "react-icons/fa";
+import { login } from "@/utilities/client_utils";
 
 const schema = z.object({
     email: z.string().email('Invalid email address').trim(),
@@ -47,9 +48,12 @@ const LoginForm = () => {
             setError(null)
 
             console.log("Submitted Data: ", data)
-            const res: any = await sendRequest(data, 'https://jira-yogesh-kumar21s-projects.vercel.app/api/login', 'form')
+            const res: any = await login(data.email, data.password)
             if (res && res.status == 200) {
                 router.push('/')
+            }
+            else {
+                setError("Error logging in. Please try again.")
             }
         }
         catch (err: any) {
@@ -78,7 +82,7 @@ const LoginForm = () => {
                         onSubmit={handleSubmit(onSubmit)}
                         className="flex flex-col gap-4 w-[350px] text-base text-gray-800"
                     >
-                        <input id="email" type="email" placeholder="E-mail" className="w-full border border-gray-400 px-2 py-1" {...register('email')} />
+                        <input id="email" type="email" placeholder="E-mail" className="w-full bg-white border border-gray-400 px-2 py-1" {...register('email')} />
                         <input id="password" type="password" placeholder="Password" className="w-full bg-white border border-gray-400 px-2 py-1" {...register('password')} />
                         <span className="ml-auto">
                             <a href="" className="text-blue-600 text-sm">Forgot Password?</a>
