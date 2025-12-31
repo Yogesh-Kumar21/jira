@@ -175,7 +175,7 @@ const SignupForm = () => {
                                 </div>
                             }
                             <span
-                                className="flex text-sm text-gray-700 bg-blue-50 p-2"
+                                className="text-sm text-gray-700 bg-blue-50 p-2"
                             >
                                 By clicking submit, you agree to jira's
                                 <a href="" className="font-semibold"> User Agreement, </a>
@@ -185,7 +185,7 @@ const SignupForm = () => {
                             </span>
                             <button
                                 type="submit"
-                                className="flex justify-center bg-blue-700 text-white p-2 rounded-md"
+                                className="flex items-center justify-center bg-blue-700 text-white p-2 rounded-md"
                             >
                                 {
                                     loading == true ?
