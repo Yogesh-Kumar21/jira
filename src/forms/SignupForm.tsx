@@ -163,10 +163,10 @@ const SignupForm = () => {
                             onSubmit={handleSubmit(onSubmit)}
                             className="flex flex-col gap-4 w-[350px] text-base text-gray-700"
                         >
-                            <input id="name" type="text" placeholder="Name" className="bg-white border border-gray-400 px-2 py-1" {...register('name')} />
-                            <input id="email" type="email" placeholder="E-mail" className="bg-white border border-gray-400 px-2 py-1" {...register('email')} />
-                            <input id="password" type="password" placeholder="Password" className="bg-white border border-gray-400 px-2 py-1" {...register('password')} />
-                            <input id="confirmPassword" type="password" className="bg-white border border-gray-400 px-2 py-1" placeholder="Confirm Password" {...register('confirmPassword')} />
+                            <input id="name" type="text" placeholder="Name" className="flex bg-white border border-gray-400 px-2 py-1" {...register('name')} />
+                            <input id="email" type="email" placeholder="E-mail" className="flex bg-white border border-gray-400 px-2 py-1" {...register('email')} />
+                            <input id="password" type="password" placeholder="Password" className="flex bg-white border border-gray-400 px-2 py-1" {...register('password')} />
+                            <input id="confirmPassword" type="password" className="flex bg-white border border-gray-400 px-2 py-1" placeholder="Confirm Password" {...register('confirmPassword')} />
                             {
                                 errors && Object.keys(errors).length > 0 && <div className="flex flex-col">
                                     {Object.keys(errors).map((key) => (
@@ -175,7 +175,7 @@ const SignupForm = () => {
                                 </div>
                             }
                             <span
-                                className="text-sm text-gray-700 bg-blue-50 p-2"
+                                className="flex text-sm text-gray-700 bg-blue-50 p-2"
                             >
                                 By clicking submit, you agree to jira's
                                 <a href="" className="font-semibold"> User Agreement, </a>
