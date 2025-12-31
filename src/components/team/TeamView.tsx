@@ -24,7 +24,7 @@ export default async function TeamView({ teamId, userId }: { teamId: string, use
             medium: "text-orange-500 font-bold",
             low: "text-blue-500 font-bold",
         }
-        return <span className={`${styles[priority] || "text-gray-400"} text-xs uppercase`}>{priority}</span>
+        return <span className={`${styles[priority] || "text-gray-400"} text-base uppercase`}>{priority}</span>
     }
 
     return (
@@ -79,7 +79,7 @@ export default async function TeamView({ teamId, userId }: { teamId: string, use
                         >
                             {/* Summary Column */}
                             <div className="col-span-6 md:col-span-7 flex items-center gap-3">
-                                <span className="text-blue-600 text-xs font-medium hover:underline shrink-0">
+                                <span className="text-blue-600 text-sm font-medium hover:underline shrink-0">
                                     TIC-{ticket._id.slice(-3).toUpperCase()}
                                 </span>
                                 <span className="text-base text-[#172B4D] font-medium truncate">
@@ -103,7 +103,7 @@ export default async function TeamView({ teamId, userId }: { teamId: string, use
                             </div>
 
                             {/* Created At Column (Replaced the Action Menu) */}
-                            <div className="col-span-1 text-right text-xs text-gray-500 font-medium whitespace-nowrap">
+                            <div className="col-span-1 text-right text-base text-gray-500 font-medium whitespace-nowrap">
                                 {formatDate(ticket.createdAt)}
                             </div>
                         </div>
