@@ -125,9 +125,13 @@ export default function CreateTeam({ userId }: any) {
                                 <Button variant="outline">Cancel</Button>
                             </Dialog.ActionTrigger>
                             <Button
-                                className="bg-blue-700 text-white px-2"
+                                className="flex justify-center items-center bg-blue-700 text-white px-2"
                                 onClick={handleSubmit}
-                            >Create Team</Button>
+                            >
+                                {
+                                    loading ? <Spinner /> : "Create Team"
+                                }
+                            </Button>
                         </Dialog.Footer>
                         <Dialog.CloseTrigger asChild>
                             <CloseButton size="sm" />
