@@ -1,6 +1,6 @@
 import { getTeam } from "@/utilities/utils"
 import Image from "next/image"
-import { Plus, LogOut, MoreHorizontal, MessageSquare, ChevronRight, Smile } from "lucide-react"
+import { LogOut, Smile } from "lucide-react" // Removed unused icons for cleanliness
 import CreateTicket from "./CreateTicket"
 
 export default async function TeamView({ teamId, userId }: { teamId: string, userId: string }) {
@@ -8,6 +8,15 @@ export default async function TeamView({ teamId, userId }: { teamId: string, use
     const teamData = data?.data
 
     if (!teamData) return <div className="p-10 text-center font-sans">Team not found.</div>
+
+    // Helper to format the date (e.g., "Jan 12")
+    const formatDate = (dateString: string) => {
+        if (!dateString) return "N/A"
+        return new Date(dateString).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric'
+        })
+    }
 
     const getPriorityIcon = (priority: string) => {
         const styles: any = {
@@ -24,11 +33,11 @@ export default async function TeamView({ teamId, userId }: { teamId: string, use
             <div className="py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                     <div className="relative h-10 w-10">
-                        <Image 
-                            alt="Logo" 
-                            src={teamData.logo || "/placeholder.png"} 
-                            fill 
-                            className="rounded-md object-cover border-2 border-gray-200" 
+                        <Image
+                            alt="Logo"
+                            src={teamData.logo || "/placeholder.png"}
+                            fill
+                            className="rounded-md object-cover border-2 border-gray-200"
                         />
                     </div>
                     <div className="flex flex-col">
@@ -58,14 +67,14 @@ export default async function TeamView({ teamId, userId }: { teamId: string, use
                     <div className="col-span-6 md:col-span-7">Summary</div>
                     <div className="col-span-3 md:col-span-2">Assignee</div>
                     <div className="col-span-2 md:col-span-2">Priority</div>
-                    <div className="col-span-1 text-right"></div>
+                    <div className="col-span-1 text-right">Created on</div>
                 </div>
 
                 {/* Tickets List */}
                 <div className="flex flex-col">
                     {teamData.tickets?.map((ticket: any) => (
-                        <div 
-                            key={ticket._id} 
+                        <div
+                            key={ticket._id}
                             className="grid grid-cols-12 items-center px-3 py-3 border-b border-gray-100 hover:bg-[#F4F5F7] cursor-pointer transition-colors group"
                         >
                             {/* Summary Column */}
@@ -93,9 +102,9 @@ export default async function TeamView({ teamId, userId }: { teamId: string, use
                                 {getPriorityIcon(ticket.priority)}
                             </div>
 
-                            {/* Actions Column */}
-                            <div className="col-span-1 text-right text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <MoreHorizontal size={18} />
+                            {/* Created At Column (Replaced the Action Menu) */}
+                            <div className="col-span-1 text-right text-xs text-gray-500 font-medium whitespace-nowrap">
+                                {formatDate(ticket.createdAt)}
                             </div>
                         </div>
                     ))}
