@@ -40,7 +40,7 @@ async function TeamList({userId} : any) {
             <span className="text-black text-md font-semibold">Join a team</span>
             {
                 teams && teams.length > 0 ? (
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-2">
                         {teams.map((t: any) => <TeamCard t={t} userId={userId} />)}
                     </div>
                 ) : (
